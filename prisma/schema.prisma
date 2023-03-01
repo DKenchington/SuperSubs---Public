@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:C:/Users/Dexte/SuperSubs/dev.db"
+}
+
+model accounts {
+  accountID      Int              @id @unique(map: "sqlite_autoindex_accounts_1") @default(autoincrement())
+  email          String           @unique(map: "sqlite_autoindex_accounts_2")
+  password       String
+  username       String
+  location       String
+  address        String
+  phone          String?
+  availabilities availabilities[]
+  contact_forms  contact_forms[]
+  events         events[]
+}
+
+model availabilities {
+  availabilityID Int      @id @unique(map: "sqlite_autoindex_availabilities_1") @default(autoincrement())
+  accountID      Int
+  location       String
+  address        String
+  sport          String
+  ability        Int
+  startDateTime  String
+  endDateTime    String
+  accounts       accounts @relation(fields: [accountID], references: [accountID], onDelete: Cascade)
+}
+
+model events {
+  eventID       Int             @id @unique(map: "sqlite_autoindex_events_1") @default(autoincrement())
+  accountID     Int
+  title         String
+  description   String
+  sport         String
+  ability       Int
+  startDateTime String
+  endDateTime   String
+  duration      Int
+  location      String
+  address       String
+  contact_forms contact_forms[]
+  accounts      accounts        @relation(fields: [accountID], references: [accountID], onDelete: Cascade)
+}
+
+model contact_forms {
+  contact_formID Int      @id @unique(map: "sqlite_autoindex_contact_forms_1") @default(autoincrement())
+  accountID      Int
+  eventID        Int
+  username       String
+  message        String
+  email          String
+  phone          String
+  events         events   @relation(fields: [eventID], references: [eventID], onDelete: Cascade)
+  accounts       accounts @relation(fields: [accountID], references: [accountID], onDelete: Cascade)
+}

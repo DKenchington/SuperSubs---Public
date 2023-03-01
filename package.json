@@ -1,0 +1,35 @@
+{
+	"name": "supersubs",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^1.0.2",
+		"@sveltejs/kit": "^1.0.0",
+		"@types/google.maps": "^3.51.1",
+		"@types/leaflet": "^1.9.0",
+		"prisma": "^4.11.0",
+		"svelte": "^3.54.0",
+		"svelte-check": "^2.9.2",
+		"tslib": "^2.4.1",
+		"typescript": "^4.9.3",
+		"vite": "^4.0.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"@googlemaps/google-maps-services-js": "^3.3.27",
+		"@googlemaps/js-api-loader": "^1.15.1",
+		"@jridgewell/sourcemap-codec": "^1.4.14",
+		"@npmcli/fs": "^3.1.0",
+		"@prisma/client": "^4.11.0",
+		"normalize.css": "^8.0.1",
+		"sqlite3": "^5.1.4",
+		"svelte-viewport-info": "^1.0.0"
+	}
+}
